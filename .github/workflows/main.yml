@@ -1,0 +1,11 @@
+jobs:
+	build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+		- setup: make setup
+		- start: make start
+		- test: make test
+		- lint: make lint
