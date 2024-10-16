@@ -5,6 +5,12 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - run: npm install
-      - run: npm test
-      - run: npx eslint
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+          with:
+              node-version: '18.x'
+              cache: 'npm'
+        - run: make setup
+        - run: make lint
+        - run: make test
+        - uses: hexlet-components/hello-from-hexlet-action@release
